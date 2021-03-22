@@ -1,0 +1,29 @@
+{
+  "name": "testcafedemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile": "tsc ObjRep/large/*.ts",
+    "chromeSingle": "testcafe chrome tests/large/loginTestPO.js --env=Test --reporter html:reports/chromeResulsts.html --video artifacts/videos",
+    "chromeAll": "testcafe chrome tests/large/*.js --env=Test --reporter html:reports/chromeResulsts.html --video artifacts/videos",
+    "firefoxAll": "testcafe firefox tests/large/*.js --env=Test --reporter html:reports/firefoxResulsts.html --video artifacts/videos",
+    "safariAll": "testcafe safari tests/large/*.js --env=Test --reporter html:reports/safariResulsts.html --video artifacts/videos",
+    "edgeAll": "testcafe edge tests/large/*.js --env=Test --reporter html:reports/edgeResulsts.html --video artifacts/videos",
+    "sauceChrome": "testcafe \"saucelabs:Chrome@latest:macOS 10.12\" 'tests/large/*.js' -c 3",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kiran Rudrangi",
+  "license": "ISC",
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.0.20",
+    "cookies": "^0.8.0",
+    "testcafe": "^1.12.0",
+    "testcafe-browser-provider-saucelabs": "^1.8.0",
+    "testcafe-reporter-html": "^1.4.6"
+  },
+  "devDependencies": {
+    "@types/cucumber": "^7.0.0",
+    "cucumber": "^7.0.0-rc.0"
+  }
+}

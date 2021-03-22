@@ -1,0 +1,43 @@
+# Our GeoIP file is too large for github
+data/GeoIP2-City.mmdb
+
+# Static JSON files for site map
+data/htmlsitemap/*
+
+node_modules
+yarn-error.log
+yarn-error.log*
+npm-debug.log
+npm-debug.log.*
+dist
+coverage
+.eslintcache
+*.orig
+.idea
+*.swp
+.DS_Store
+selenium.log
+temp
+.nyc_output/
+.#*
+package-lock.json
+.vscode
+flamegraphs/
+isolate-*.log
+# Visual Studio cache/options directory
+.vs/
+# Visual Studio Favorites https://github.com/kdcro101/vscode-favorite-items
+.favorites.json
+*.css.d.ts
+*.scss.d.ts
+# https://github.com/ggreer/the_silver_searcher
+.ignore
+schema.graphql
+static/_stats/
+static/_storybook/
+static/brand.css
+static/brand.html
+stories/*.d.ts*
+reports
+.npmrc
+tests/dynamicTestData.json
