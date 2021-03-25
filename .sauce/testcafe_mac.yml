@@ -1,0 +1,76 @@
+apiVersion: v1alpha
+kind: testcafe
+sauce:
+  region: us-west-1
+  concurrency: 10
+  metadata:
+    name: AG - Testing -testcafe
+    tags:
+      - e2e
+      - release team
+      - other tag
+    build: $BUILD_ID
+
+suites:
+  - name: "sauce_iphonex"
+    browserName: "Safari"
+    deviceName: "iPhone X Simulator"
+    src:
+      - "**/small/loginTestPO.js" # test files glob
+    screenshots:
+      takeOnFails: true
+      fullPage: true
+    platformName: "iOS"
+    env:
+      hello: world
+
+  - name: "sauce_win10_chrome"
+    browserName: "chrome"
+    platformName: "Windows 10"
+    src:
+      - "**/large/loginTestPO.js" # test files glob
+    screenshots:
+      takeOnFails: true
+      fullPage: true
+    env:
+      hello: world
+
+  - name: "sauce_win10_firefox"
+    browserName: "firefox"
+    platformName: "Windows 10"
+    src:
+      - "**/large/loginTestPO.js" # test files glob
+    screenshots:
+      takeOnFails: true
+      fullPage: true
+    env:
+      hello: world
+
+  - name: "sauce_win10_edge"
+    browserName: "microsoftedge"
+    platformName: "Windows 10"
+    src:
+      - "**/large/loginTestPO.js" # test files glob
+    screenshots:
+      takeOnFails: true
+      fullPage: true
+    env:
+      hello: world
+
+  - name: "sauce_os11_safari"
+    browserName: "safari"
+    src:
+      - "**/large/loginTestPO.js" # test files glob
+    screenshots:
+      takeOnFails: true
+      fullPage: true
+    platformName: "mac 11.00"
+
+docker:
+  fileTransfer: mount # Defaults to `mount`. Choose between mount|copy.
+  image: saucelabs/stt-testcafe-node:v0.4.0
+
+rootDir: ./
+
+testcafe:
+  version: 1.11.0
