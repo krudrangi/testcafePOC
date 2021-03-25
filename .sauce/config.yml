@@ -57,7 +57,7 @@ suites:
     env:
       hello: world
 
-  - name: "sauce_osx_safari"
+  - name: "sauce_os11_safari"
     browserName: "safari"
     src:
       - "**/large/loginTestPO.js" # test files glob
@@ -73,4 +73,4 @@ docker:
 rootDir: ./
 
 testcafe:
-  version: 1.11.0
+  version: 1.10.1
