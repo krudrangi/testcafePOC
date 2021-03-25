@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile": "tsc ObjRep/large/*.ts",
+    "compile": "tsc objectRepo/*/*.ts",
     "chromeSingle": "testcafe chrome tests/large/loginTestPO.js --env=Test --reporter html:reports/chromeResulsts.html --video artifacts/videos",
     "chromeAll": "testcafe chrome tests/large/*.js --env=Test --reporter html:reports/chromeResulsts.html --video artifacts/videos",
     "firefoxAll": "testcafe firefox tests/large/*.js --env=Test --reporter html:reports/firefoxResulsts.html --video artifacts/videos",

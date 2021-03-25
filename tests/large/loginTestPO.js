@@ -1,5 +1,5 @@
 import { Selector, ClientFunction } from 'testcafe';
-import homePage from '../../ObjRep/large/homePage';
+import homePage from '../../objectRepo/large/homePage';
 
 const testPageUrl = 'https://qa-next.rent.com'
 
@@ -14,7 +14,12 @@ fixture`F1-Rent NextJS Login test from Home Page`
   .page(testPageUrl)
   .beforeEach(async t => {
     await setCookies();
-    await t.navigateTo(testPageUrl);
+    await t
+      .navigateTo(testPageUrl)
+      .maximizeWindow()
+      .setTestSpeed(1) //Must be a number between 0.01 to 1
+      .setPageLoadTimeout(0);
+
   });
 
 test('F1-t1 Should have a Login button on Home Page', async t => {

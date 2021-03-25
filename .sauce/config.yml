@@ -70,6 +70,7 @@ docker:
   fileTransfer: mount # Defaults to `mount`. Choose between mount|copy.
   image: saucelabs/stt-testcafe-node:v0.4.0
 
+rootDir: ./
+
 testcafe:
-  projectPath: ./
   version: 1.11.0
