@@ -1,7 +1,8 @@
 import { Selector, ClientFunction } from 'testcafe';
-import pdp from '../../objectRepo/shared/pdp';
+import pdpPage from '../../objectRepo/shared/pdp';
 
-const testPageUrl = 'https://qa-next.rent.com/georgia/atlanta-apartments/the-savoy-4-497285'
+const pdpUrl = 'https://qa-next.rent.com/georgia/atlanta-apartments/the-savoy-4-497285'
+const pdpListingTitle = 'The Savoy';
 
 const getUrl = ClientFunction(() => window.location.href);
 
@@ -12,26 +13,27 @@ const setCookies = ClientFunction(() => {
 
 fixture`F1-Rent NextJS- PDP-Sticky-Lead-Submission`
   .meta('fixtureID', 'f-0001')
-  .meta({ author: 'Kiran Rudrangi', creationDate: '03/25/2021' })
-  .page(testPageUrl)
+  .meta({ author: 'Kiran Rudrangi', creationDate: '03/31/2021' })
+  .page(pdpUrl)
   .beforeEach(async t => {
     await setCookies();
     await t
-      .navigateTo(testPageUrl)
-      .maximizeWindow()
+      .navigateTo(pdpUrl)
       .setTestSpeed(1) //Must be a number between 0.01 to 1
   });
 
 test('F1-t1 Verify URL on PDP', async t => {
   await t
-    .expect(getUrl()).contains(testPageUrl)
+    .expect(getUrl()).contains(pdpUrl)
 });
 
-test('F1-t2 Should have a sendAnEmailButton button on PDP', async t => {
+test('F1-t2 Verify & Validate PDP Listing Title', async t => {
   await t
-    .expect(pdp.propertyTitle.exists).ok()
-    .expect(pdp.sendEmailButton.exists).ok();
-  await t.click(pdp.sendEmailButton)
-    .expect(pdp.leadModal.exists).ok()
-    .wait(9000);
+    .expect(pdpPage.propertyTitle.exists).ok()
+    .expect(await Selector(pdpPage.propertyTitle).innerText).eql(pdpListingTitle, '** Listing Name not matching **')
+});
+
+test('F1-t3 Verify & Validate Lead Submission Form on PDP', async t => {
+  await t
+    .expect(pdpPage.leadSubmissionForm.exists).ok()
 });
