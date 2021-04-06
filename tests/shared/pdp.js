@@ -10,8 +10,7 @@ class HeaderBypassAutorization extends RequestHook {
     e.requestOptions.headers['domain'] = '.rent.com';
   }
   onResponse(e) {
-    // This method must also be overridden,
-    // but you can leave it blank.
+    // This method must also be overridden, but you can leave it blank.
   }
 
 }
@@ -21,19 +20,19 @@ const pdpUrl = 'https://qa-next.rent.com/georgia/atlanta-apartments/the-savoy-4-
 const getUrl = ClientFunction(() => window.location.href);
 const pdpListingTitle = 'The Savoy';
 
-const scrollBy = ClientFunction((x, y) => {
-  window.scrollBy(x, y);
-});
+// const scrollBy = ClientFunction((x, y) => {
+//   window.scrollBy(x, y);
+// });
 
-const scrollToElement = ClientFunction((selector, offsetX, offsetY) => {
-  const element = selector();
+// const scrollToElement = ClientFunction((selector, offsetX, offsetY) => {
+//   const element = selector();
 
-  if (element && element.scrollIntoView)
-    element.scrollIntoView();
+//   if (element && element.scrollIntoView)
+//     element.scrollIntoView();
 
-  else if (offsetX !== void 0 && offsetY !== void 0)
-    window.scrollBy(offsetX, offsetY);
-});
+//   else if (offsetX !== void 0 && offsetY !== void 0)
+//     window.scrollBy(offsetX, offsetY);
+// });
 
 fixture`F1-Rent NextJS- PDP-Sticky-Lead-Submission`
   .page(pdpUrl)
