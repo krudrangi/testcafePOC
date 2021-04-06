@@ -27,9 +27,10 @@ class pdp {
     this.secondLeadFrom = Selector(elementByXPath('//form[@data-tag_section="lead_submission_form"]')).nth(1);
     this.thirdLeadFrom = Selector(elementByXPath('//form[@data-tag_section="lead_submission_form"]')).nth(2);
 
-    this.sendEmailButton = Selector('[data-tid="button"]').withText('Send an Email');
-    this.thankyouModalCloseButton = Selector('[data-tid="modal"] [data-tid="close-modal"]');
+    this.thankyouModalAckMsg = Selector('[data-tid="modal"] div');
+    this.thankyouModalCloseBtn = Selector('data-tid="close-modal"]');
   }
+
 
 }
 export default new pdp();
