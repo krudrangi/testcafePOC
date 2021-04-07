@@ -26,6 +26,7 @@ fixture`F1-Rent NextJS- PDP-Sticky-Lead-Submission`
 
 test('F1-t1 Verify URL on PDP', async t => {
   await t
+    .maximizeWindow()
     .expect(getUrl()).contains(pdpUrl)
 });
 
@@ -54,8 +55,6 @@ test('F1-t3 First Inline Lead submit on PDP', async t => {
     .expect(pdpPage.thankyouModalCloseBtn.exists).ok()
     .click(pdpPage.thankyouModalCloseBtn)
     .expect(pdpPage.leadFormXpathSelector.nth(0).exists).ok();
-
-  // await t.wait(3000)
 });
 
 // test('F1-t4 Validate Thank you Modal', async t => {
