@@ -53,8 +53,8 @@ test('F1-t3 First Inline Lead submit on PDP', async t => {
   await t
     .setTestSpeed(0.5)
     .expect(pdpPage.leadFormXpathSelector.nth(0).exists).ok()
-    .typeText(pdpPage.leadFormNameXpathSelector.nth(0), 'FOODY DAN', { speed: 1 })
-    .typeText(pdpPage.leadFormEmailXpathSelector.nth(0), 'kiran@cypress.com', { replace: true, paste: true })
+    .typeText(pdpPage.leadFormNameXpathSelector.nth(0), 'FOODY DAN', { speed: 0.5 })
+    .typeText(pdpPage.leadFormEmailXpathSelector.nth(0), 'kiran@testcafe.com', { speed: 0.5 })
     .typeText(pdpPage.leadFormPhoneXpathSelector.nth(0), '8885554444', { replace: true, paste: true });
 
   console.log(await pdpPage.leadFormSubmitButtonXpathSelector.nth(0).innerText);
@@ -63,13 +63,22 @@ test('F1-t3 First Inline Lead submit on PDP', async t => {
     .click(pdpPage.leadFormSubmitButtonXpathSelector.nth(0));
 
   // await scrollToElement(pdpPage.leadFormSubmitButtonXpathSelector.nth(0), 1000, 0);
+
+  await t
+    .expect(pdpPage.thankyouModalAckMsg.exists).ok()
+    .expect((pdpPage.thankyouModalAckMsg).innerText).eql('Your message has been sent.', '** Ack Msg NOT matching **')
+    .expect(pdpPage.thankyouModalCloseBtn.exists).ok()
+    .click(pdpPage.thankyouModalCloseBtn)
+    .expect(pdpPage.leadFormXpathSelector.nth(0).exists).ok();
+
   // await t.wait(3000)
 });
 
-test('F1-t3 Validate Thank you Modal', async t => {
-  await t
-    .expect(pdpPage.thankyouModalAckMsg.exists).ok()
-    .expect(pdpPage.thankyouModalCloseBtn.exists).ok()
-    .click(pdpPage.thankyouModalCloseButton)
-    .expect(pdpPage.leadFormXpathSelector.nth(0).exists).ok();
-});
+// test('F1-t4 Validate Thank you Modal', async t => {
+//   await t
+//     .expect(pdpPage.thankyouModalAckMsg.exists).ok()
+//     .expect((pdpPage.thankyouModalAckMsg).innerText).eql('Your message has been sent.', '** Ack Msg NOT matching **')
+//     .expect(pdpPage.thankyouModalCloseBtn.exists).ok()
+//     .click(pdpPage.thankyouModalCloseBtn)
+//     .expect(pdpPage.leadFormXpathSelector.nth(0).exists).ok();
+// });
