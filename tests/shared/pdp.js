@@ -20,20 +20,6 @@ const pdpUrl = 'https://qa-next.rent.com/georgia/atlanta-apartments/the-savoy-4-
 const getUrl = ClientFunction(() => window.location.href);
 const pdpListingTitle = 'The Savoy';
 
-// const scrollBy = ClientFunction((x, y) => {
-//   window.scrollBy(x, y);
-// });
-
-// const scrollToElement = ClientFunction((selector, offsetX, offsetY) => {
-//   const element = selector();
-
-//   if (element && element.scrollIntoView)
-//     element.scrollIntoView();
-
-//   else if (offsetX !== void 0 && offsetY !== void 0)
-//     window.scrollBy(offsetX, offsetY);
-// });
-
 fixture`F1-Rent NextJS- PDP-Sticky-Lead-Submission`
   .page(pdpUrl)
   .requestHooks(headerBypassAutorization)
@@ -46,7 +32,7 @@ test('F1-t1 Verify URL on PDP', async t => {
 test('F1-t2 Verify & Validate PDP Listing Title', async t => {
   await t
     .expect(pdpPage.propertyTitle.exists).ok()
-    .expect((pdpPage.propertyTitle).innerText).eql(pdpListingTitle, '** Listing Name NOT matching **')
+    .expect((pdpPage.propertyTitle).innerText).eql(pdpListingTitle, '** Listing Name NOT matching **');
 });
 
 test('F1-t3 First Inline Lead submit on PDP', async t => {
@@ -55,14 +41,12 @@ test('F1-t3 First Inline Lead submit on PDP', async t => {
     .expect(pdpPage.leadFormXpathSelector.nth(0).exists).ok()
     .typeText(pdpPage.leadFormNameXpathSelector.nth(0), 'FOODY DAN', { speed: 0.5 })
     .typeText(pdpPage.leadFormEmailXpathSelector.nth(0), 'kiran@testcafe.com', { speed: 0.5 })
-    .typeText(pdpPage.leadFormPhoneXpathSelector.nth(0), '8885554444', { replace: true, paste: true });
+    .typeText(pdpPage.leadFormPhoneXpathSelector.nth(0), '8885554444', { replace: true, paste: true })
+    .expect((pdpPage.leadFormSubmitButtonXpathSelector.nth(0)).innerText).eql('Send', '** Send Button text NOT matching **');
 
-  console.log(await pdpPage.leadFormSubmitButtonXpathSelector.nth(0).innerText);
   await t
     .expect(pdpPage.leadFormSubmitButtonXpathSelector.nth(0).exists).ok()
     .click(pdpPage.leadFormSubmitButtonXpathSelector.nth(0));
-
-  // await scrollToElement(pdpPage.leadFormSubmitButtonXpathSelector.nth(0), 1000, 0);
 
   await t
     .expect(pdpPage.thankyouModalAckMsg.exists).ok()
