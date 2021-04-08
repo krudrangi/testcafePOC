@@ -1,28 +1,14 @@
-import { Selector, RequestHook, ClientFunction } from 'testcafe';
+import { Selector, ClientFunction } from 'testcafe';
 import pdpPage from '../../objectRepo/shared/pdp';
+import authorize from '../../commands/headerAuth';
 
-class HeaderBypassAutorization extends RequestHook {
-  constructor() {
-    super();
-  }
-  onRequest(e) {
-    e.requestOptions.headers['x-rp-fwbypass'] = 'true';
-    e.requestOptions.headers['domain'] = '.rent.com';
-  }
-  onResponse(e) {
-    // This method must also be overridden, but you can leave it blank.
-  }
-
-}
-
-const headerBypassAutorization = new HeaderBypassAutorization();
 const pdpUrl = 'https://qa-next.rent.com/georgia/atlanta-apartments/the-savoy-4-497285'
 const getUrl = ClientFunction(() => window.location.href);
 const pdpListingTitle = 'The Savoy';
 
 fixture`F1-Rent NextJS- PDP-Lead-Submission`
   .page(pdpUrl)
-  .requestHooks(headerBypassAutorization)
+  .requestHooks(authorize)
 
 test('F1-t1 Verify URL on PDP', async t => {
   await t
