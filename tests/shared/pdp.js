@@ -20,7 +20,7 @@ const pdpUrl = 'https://qa-next.rent.com/georgia/atlanta-apartments/the-savoy-4-
 const getUrl = ClientFunction(() => window.location.href);
 const pdpListingTitle = 'The Savoy';
 
-fixture`F1-Rent NextJS- PDP-Sticky-Lead-Submission`
+fixture`F1-Rent NextJS- PDP-Lead-Submission`
   .page(pdpUrl)
   .requestHooks(headerBypassAutorization)
 
@@ -68,12 +68,3 @@ test('F1-t3 Finding number of available Leads forms on PDP & submit them', async
     }
   }
 });
-
-// test('F1-t4 Validate Thank you Modal', async t => {
-//   await t
-//     .expect(pdpPage.thankyouModalAckMsg.exists).ok()
-//     .expect((pdpPage.thankyouModalAckMsg).innerText).eql('Your message has been sent.', '** Ack Msg NOT matching **')
-//     .expect(pdpPage.thankyouModalCloseBtn.exists).ok()
-//     .click(pdpPage.thankyouModalCloseBtn)
-//     .expect(pdpPage.leadFormXpathSelector.nth(0).exists).ok();
-// });
