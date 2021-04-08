@@ -37,25 +37,36 @@ test('F1-t2 Verify & Validate PDP Listing Title', async t => {
     .expect((pdpPage.propertyTitle).innerText).eql(pdpListingTitle, '** Listing Name NOT matching **');
 });
 
-test('F1-t3 First Inline Lead submit on PDP', async t => {
-  await t
-    .setTestSpeed(0.5)
-    .expect(pdpPage.leadFormXpathSelector.nth(0).exists).ok()
-    .typeText(pdpPage.leadFormNameXpathSelector.nth(0), 'FOODY DAN', { speed: 0.5 })
-    .typeText(pdpPage.leadFormEmailXpathSelector.nth(0), 'kiran@testcafe.com', { replace: true, paste: true })
-    .typeText(pdpPage.leadFormPhoneXpathSelector.nth(0), '8885554444', { replace: true, paste: true })
-    .expect((pdpPage.leadFormSubmitButtonXpathSelector.nth(0)).innerText).eql('Send', '** Send Button text NOT matching **');
+test('F1-t3 Finding number of available Leads forms on PDP & submit them', async t => {
+  const counter = await pdpPage.leadFormXpathSelector.count
+  console.log('Available Lead Forms:', counter);
 
-  await t
-    .expect(pdpPage.leadFormSubmitButtonXpathSelector.nth(0).exists).ok()
-    .click(pdpPage.leadFormSubmitButtonXpathSelector.nth(0));
+  for (let i = 0; i < counter; i++) {
+    console.log('Submitting Lead Number # ', i + 1);
 
-  await t
-    .expect(pdpPage.thankyouModalAckMsg.visible).ok()
-    .expect((pdpPage.thankyouModalAckMsg).innerText).eql('Your message has been sent.', '** Ack Msg NOT matching **')
-    .expect(pdpPage.thankyouModalCloseBtn.visible).ok()
-    .click(pdpPage.thankyouModalCloseBtn)
-    .expect(pdpPage.leadFormXpathSelector.nth(0).visible).ok();
+    if (await pdpPage.leadFormXpathSelector.nth(i).visible) {
+      await t
+        .setTestSpeed(0.5)
+        .expect(pdpPage.leadFormXpathSelector.nth(i).visible).ok()
+        .typeText(pdpPage.leadFormNameXpathSelector.nth(i), 'FOODY DAN', { speed: 0.5 })
+        .typeText(pdpPage.leadFormEmailXpathSelector.nth(i), 'kiran@testcafe.com', { replace: true, paste: true })
+        .typeText(pdpPage.leadFormPhoneXpathSelector.nth(i), '8885554444', { replace: true, paste: true })
+        .expect((pdpPage.leadFormSubmitButtonXpathSelector.nth(i)).innerText).eql('Send', '** Send Button text NOT matching **');
+
+      await t
+        .expect(pdpPage.leadFormSubmitButtonXpathSelector.nth(i).exists).ok()
+        .click(pdpPage.leadFormSubmitButtonXpathSelector.nth(i));
+
+      await t
+        .expect(pdpPage.thankyouModalAckMsg.visible).ok()
+        .expect((pdpPage.thankyouModalAckMsg).innerText).eql('Your message has been sent.', '** Ack Msg NOT matching **')
+        .expect(pdpPage.thankyouModalCloseBtn.visible).ok()
+        .click(pdpPage.thankyouModalCloseBtn)
+        .expect(pdpPage.leadFormXpathSelector.nth(i).visible).ok();
+    } else {
+      console.log('Lead Form ', i + 1, ' is not visible..')
+    }
+  }
 });
 
 // test('F1-t4 Validate Thank you Modal', async t => {
