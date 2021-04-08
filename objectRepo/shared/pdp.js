@@ -1,20 +1,8 @@
 import { Selector, ClientFunction, t } from 'testcafe';
+import { elementByXPath } from '../../commands/elementByXpath';
 class pdp {
 
   constructor() {
-    const elementByXPath = Selector(xpath => {
-      const iterator = document.evaluate(xpath, document, null, XPathResult.UNORDERED_NODE_ITERATOR_TYPE, null)
-      const items = [];
-
-      let item = iterator.iterateNext();
-
-      while (item) {
-        items.push(item);
-        item = iterator.iterateNext();
-      }
-
-      return items;
-    });
 
     this.propertyTitle = Selector('[data-tid="property-title"]');
 
