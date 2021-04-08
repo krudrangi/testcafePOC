@@ -1,9 +1,10 @@
 import { Selector, ClientFunction } from 'testcafe';
 import pdpPage from '../../objectRepo/shared/pdp';
 import authorize from '../../commands/headerAuth';
+import { scrollBy, getUrl } from '../../commands/clientFunctions';
 
 const pdpUrl = 'https://qa-next.rent.com/georgia/atlanta-apartments/the-savoy-4-497285'
-const getUrl = ClientFunction(() => window.location.href);
+// const getUrl = ClientFunction(() => window.location.href);
 const pdpListingTitle = 'The Savoy';
 
 fixture`F1-Rent NextJS- PDP-Lead-Submission`
@@ -23,7 +24,7 @@ test('F1-t2 Verify & Validate PDP Listing Title', async t => {
     .expect((pdpPage.propertyTitle).innerText).eql(pdpListingTitle, '** Listing Name NOT matching **');
 });
 
-test('F1-t3 Finding number of available Leads forms on PDP & submit them', async t => {
+test.skip('F1-t3 Finding number of available Leads forms on PDP & submit them', async t => {
   const counter = await pdpPage.leadFormXpathSelector.count
   console.log('Available Lead Forms:', counter);
 
@@ -53,4 +54,19 @@ test('F1-t3 Finding number of available Leads forms on PDP & submit them', async
       console.log('Lead Form ', i + 1, ' is not visible..')
     }
   }
+});
+
+test('F1-t3 Scroll Test', async t => {
+
+  await t.hover(pdpPage.propertyTitle);
+  console.log('Hover on Title Waiting....');
+  await t.wait(5000);
+
+  await t.hover(pdpPage.leadFormXpathSelector.nth(0))
+  console.log('Hover on FIRST LEAD Waiting....');
+  await t.wait(5000);
+
+  await t.hover(pdpPage.leadFormXpathSelector.nth(1))
+  console.log('Hover on SECOND LEAD Waiting....');
+  await t.wait(5000);
 });

@@ -1,4 +1,4 @@
-import { Selector, ClientFunction, t } from 'testcafe';
+import { Selector, ClientFunction } from 'testcafe';
 import { elementByXPath } from '../../commands/elementByXpath';
 class pdp {
 
