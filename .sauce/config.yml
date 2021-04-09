@@ -57,6 +57,17 @@ suites:
     env:
       hello: world
 
+  - name: "sauce_win10_ie11"
+    browserName: "internetexplorer"
+    platformName: "Windows 10"
+    src:
+      - "**/shared/pdp.js" # test files glob
+    screenshots:
+      takeOnFails: true
+      fullPage: true
+    env:
+      hello: world
+
   - name: "sauce_os11_safari"
     browserName: "safari"
     src:
