@@ -4,7 +4,7 @@ sauce:
   region: us-west-1
   concurrency: 10
   metadata:
-    name: AG - Testing -testcafe
+    name: RENT NEXT-JS Testing (testcafe v1.10.1)
     tags:
       - e2e
       - release team
