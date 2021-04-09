@@ -1,5 +1,5 @@
 import { Selector, ClientFunction } from 'testcafe';
-import homePage from '../../objectRepo/large/homePage';
+import homePage from '../objectRepo/large/homePage';
 
 const testPageUrl = 'https://qa-next.rent.com'
 
