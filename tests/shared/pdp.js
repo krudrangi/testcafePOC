@@ -60,10 +60,10 @@ test('F1-t3 Scroll Test', async t => {
 
   await t.hover(pdpPage.footer)
   console.log('Hover on FOOTER Waiting....');
-  await t.wait(5000);
+  await t.wait(3000);
 
   await t.hover(pdpPage.propertyTitle);
   console.log('Hover on TITLE Waiting....');
-  await t.wait(5000);
+  await t.wait(3000);
 
 });

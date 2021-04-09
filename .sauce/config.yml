@@ -16,7 +16,7 @@ suites:
     browserName: "Safari"
     deviceName: "iPhone X Simulator"
     src:
-      - "**/small/loginTestPO.js" # test files glob
+      - "**/shared/pdp.js" # test files glob
     screenshots:
       takeOnFails: true
       fullPage: true
@@ -28,7 +28,7 @@ suites:
     browserName: "chrome"
     platformName: "Windows 10"
     src:
-      - "**/large/loginTestPO.js" # test files glob
+      - "**/shared/pdp.js" # test files glob
     screenshots:
       takeOnFails: true
       fullPage: true
@@ -39,7 +39,7 @@ suites:
     browserName: "firefox"
     platformName: "Windows 10"
     src:
-      - "**/large/loginTestPO.js" # test files glob
+      - "**/shared/pdp.js" # test files glob
     screenshots:
       takeOnFails: true
       fullPage: true
@@ -50,7 +50,7 @@ suites:
     browserName: "microsoftedge"
     platformName: "Windows 10"
     src:
-      - "**/large/loginTestPO.js" # test files glob
+      - "**/shared/pdp.js" # test files glob
     screenshots:
       takeOnFails: true
       fullPage: true
@@ -60,7 +60,7 @@ suites:
   - name: "sauce_os11_safari"
     browserName: "safari"
     src:
-      - "**/large/loginTestPO.js" # test files glob
+      - "**/shared/pdp.js" # test files glob
     screenshots:
       takeOnFails: true
       fullPage: true
