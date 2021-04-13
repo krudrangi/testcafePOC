@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "compile": "tsc objectRepo/*/*.ts",
-    "chromeSingle": "testcafe chrome tests/large/loginTestPO.js --env=Test --reporter html:reports/chromeResulsts.html --video artifacts/videos",
-    "chromeAll": "testcafe chrome tests/large/*.js --env=Test --reporter html:reports/chromeResulsts.html --video artifacts/videos",
-    "firefoxAll": "testcafe firefox tests/large/*.js --env=Test --reporter html:reports/firefoxResulsts.html --video artifacts/videos",
-    "safariAll": "testcafe safari tests/large/*.js --env=Test --reporter html:reports/safariResulsts.html --video artifacts/videos",
-    "edgeAll": "testcafe edge tests/large/*.js --env=Test --reporter html:reports/edgeResulsts.html --video artifacts/videos",
-    "sauceChrome": "testcafe \"saucelabs:Chrome@latest:macOS 10.12\" 'tests/large/*.js' -c 3",
+    "chromeSingle": "testcafe chrome tests/shared/pdp.js --env=Test --reporter html:reports/chromeResulsts.html --video artifacts/videos",
+    "chromeAll": "testcafe chrome tests/shared/*.js --env=Test --reporter html:reports/chromeResulsts.html --video artifacts/videos",
+    "firefoxAll": "testcafe firefox tests/shared/*.js --env=Test --reporter html:reports/firefoxResulsts.html --video artifacts/videos",
+    "safariAll": "testcafe safari tests/shared/*.js --env=Test --reporter html:reports/safariResulsts.html --video artifacts/videos",
+    "edgeAll": "testcafe edge tests/shared/*.js --env=Test --reporter html:reports/edgeResulsts.html --video artifacts/videos",
+    "sauceChrome": "testcafe \"saucelabs:Chrome@latest:macOS 10.12\" 'tests/shared/*.js' -c 3",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kiran Rudrangi",
