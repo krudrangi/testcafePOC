@@ -7,7 +7,7 @@ const pdpUrl = 'https://qa-next.rent.com/georgia/atlanta-apartments/the-savoy-4-
 // const getUrl = ClientFunction(() => window.location.href);
 const pdpListingTitle = 'The Savoy';
 
-fixture`F1-Rent NextJS- PDP-Lead-Submission`
+fixture`F1-Rent-NextJS PDP-Lead-Submission`
   .page(pdpUrl)
   .requestHooks(authorize)
 
@@ -24,12 +24,12 @@ test('F1-t2 Verify & Validate PDP Listing Title', async t => {
     .expect((pdpPage.propertyTitle).innerText).eql(pdpListingTitle, '** Listing Name NOT matching **');
 });
 
-test.skip('F1-t3 Finding number of available Leads forms on PDP & submit them', async t => {
+test('F1-t3 Finding number of available Leads forms on PDP & submit them', async t => {
   const counter = await pdpPage.leadFormXpathSelector.count
   console.log('Available Lead Forms:', counter);
 
   for (let i = 0; i < counter; i++) {
-    console.log('Submitting Lead Number # ', i + 1);
+    console.log('At Lead Number # ', i + 1);
 
     if (await pdpPage.leadFormXpathSelector.nth(i).visible) {
       await t
@@ -50,8 +50,9 @@ test.skip('F1-t3 Finding number of available Leads forms on PDP & submit them', 
         .expect(pdpPage.thankyouModalCloseBtn.visible).ok()
         .click(pdpPage.thankyouModalCloseBtn)
         .expect(pdpPage.leadFormXpathSelector.nth(i).visible).ok();
+      console.log('Submission completed for Lead Number # ', i + 1);
     } else {
-      console.log('Lead Form ', i + 1, ' is not visible..')
+      console.log('Lead Form ', i + 1, ' is NOT visible..')
     }
   }
 });

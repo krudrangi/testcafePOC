@@ -34,6 +34,7 @@ suites:
       fullPage: true
     env:
       hello: world
+    skipJsErrors: true
 
   - name: "sauce_win10_firefox"
     browserName: "firefox"
@@ -45,6 +46,7 @@ suites:
       fullPage: true
     env:
       hello: world
+    skipJsErrors: false
 
   - name: "sauce_win10_edge"
     browserName: "microsoftedge"
