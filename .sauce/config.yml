@@ -4,7 +4,7 @@ sauce:
   region: us-west-1
   concurrency: 10
   metadata:
-    name: RENT NEXT-JS Testing (testcafe v1.10.1)
+    name: TestCafe POC Testing
     tags:
       - e2e
       - release team
@@ -46,7 +46,7 @@ suites:
       fullPage: true
     env:
       hello: world
-    skipJsErrors: false
+    skipJsErrors: true
 
   - name: "sauce_win10_edge"
     browserName: "microsoftedge"
@@ -58,6 +58,7 @@ suites:
       fullPage: true
     env:
       hello: world
+    skipJsErrors: true
 
   - name: "sauce_win10_ie11"
     browserName: "internetexplorer"
@@ -69,6 +70,7 @@ suites:
       fullPage: true
     env:
       hello: world
+    skipJsErrors: true
 
   - name: "sauce_os11_safari"
     browserName: "safari"
@@ -78,6 +80,9 @@ suites:
       takeOnFails: true
       fullPage: true
     platformName: "mac 11.00"
+    env:
+      hello: world
+    skipJsErrors: true
 
 docker:
   fileTransfer: mount # Defaults to `mount`. Choose between mount|copy.
@@ -86,4 +91,4 @@ docker:
 rootDir: ./
 
 testcafe:
-  version: 1.10.1
+  version: 1.11.0

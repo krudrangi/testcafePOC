@@ -18,7 +18,7 @@ suites:
       - "**/shared/pdp.js" # test files glob
     screenshots:
       takeOnFails: true
-      fullPage: true
+      fullPage: false
     platformName: "mac 11.00"
 
 docker:
