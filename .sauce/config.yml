@@ -72,6 +72,18 @@ suites:
       hello: world
     skipJsErrors: true
 
+  - name: "sauce_Google_API_Emulator"
+    mode: sauce
+    browserName: "Chrome"
+    skipJsErrors: true
+    src:
+      - "**/shared/pdp.js" # test files glob
+    devices:
+      - name: Samsung Galaxy S9 HD GoogleAPI Emulator
+        platformName: Android
+        platformVersions:
+          - "9.0"
+
   - name: "sauce_iPhone_12"
     mode: sauce
     browserName: "safari"
