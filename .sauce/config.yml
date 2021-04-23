@@ -12,18 +12,6 @@ sauce:
     build: $BUILD_ID
 
 suites:
-  - name: "sauce_iphonex"
-    browserName: "Safari"
-    deviceName: "iPhone X Simulator"
-    src:
-      - "**/shared/pdp.js" # test files glob
-    screenshots:
-      takeOnFails: true
-      fullPage: true
-    platformName: "iOS"
-    env:
-      hello: world
-
   - name: "sauce_win10_chrome"
     browserName: "chrome"
     platformName: "Windows 10"
@@ -83,6 +71,30 @@ suites:
     env:
       hello: world
     skipJsErrors: true
+
+  - name: "sauce_iPhone_12"
+    mode: sauce
+    browserName: "safari"
+    skipJsErrors: true
+    src:
+      - "**/shared/pdp.js" # test files glob
+    devices:
+      - name: iPhone 12 Simulator
+        platformName: iOS
+        platformVersions:
+          - "14.3"
+
+  - name: "sauce_iPad_mini"
+    mode: sauce
+    browserName: "safari"
+    skipJsErrors: true
+    src:
+      - "**/shared/pdp.js" # test files glob
+    devices:
+      - name: iPad mini (5th generation) Simulator
+        platformName: iOS
+        platformVersions:
+          - "14.3"
 
 docker:
   fileTransfer: mount # Defaults to `mount`. Choose between mount|copy.
