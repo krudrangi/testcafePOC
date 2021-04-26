@@ -1,7 +1,8 @@
 import { Selector, ClientFunction } from 'testcafe';
-import pdpPage from '../objectRepo/shared/pdp';
 import authorize from '../commands/headerAuth';
 import { scrollBy, getUrl } from '../commands/clientFunctions';
+import pdpPage from '../objectRepo/shared/pdp';
+
 
 const pdpUrl = 'https://qa-next.rent.com/georgia/atlanta-apartments/the-savoy-4-497285'
 // const getUrl = ClientFunction(() => window.location.href);
