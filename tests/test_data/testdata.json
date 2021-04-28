@@ -1,12 +1,12 @@
 [
   {
-    "name": "Kiran",
-    "email": "kiran@testcafe.com",
-    "phone": "8885554444"
-  },
-  {
     "name": "Foo Bar",
     "email": "foo@bar.com",
-    "phone": "9995553333"
+    "phone": "1115553333"
+  },
+  {
+    "name": "David Smith",
+    "email": "david@smith.com",
+    "phone": "2225553333"
   }
 ]
